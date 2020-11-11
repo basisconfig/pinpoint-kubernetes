@@ -48,6 +48,12 @@ spec:
 {{- else }}
             value: "{{ .Release.Name }}-zookeeper"
 {{- end }}
+          - name: PINPOINT_ZOOKEEPER_ADDRESS
+{{- if .Values.externalZookeeperAddress }}
+            value: "{{ .Values.externalZookeeperAddress }}"
+{{- else }}
+            value: "{{ .Release.Name }}-zookeeper"
+{{- end }}
           - name: HBASE_HOST
 {{- if .Values.externalHbaseAddress }}
             value: "{{ .Values.externalHbaseAddress }}"
@@ -67,7 +73,7 @@ spec:
           - name: DEBUG_LEVEL
             value: "{{ .Values.debugLevel }}"
           ports:
-          - containerPort: 9080
+          - containerPort: 8081
             protocol: TCP
           - containerPort: 9991
             protocol: TCP
@@ -85,7 +91,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /serverTime.pinpoint
-              port: 9080
+              port: 8081
               scheme: HTTP
             initialDelaySeconds: 10
             periodSeconds: 10
@@ -96,7 +102,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /serverTime.pinpoint
-              port: 9080
+              port: 8081
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 10

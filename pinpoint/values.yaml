@@ -15,7 +15,7 @@ pinpoint-collector:
   externalHbaseAddress:
 
 hbase:
-  enabled: false
+  enabled: true
   
 mysql:
   enable: true
@@ -78,6 +78,15 @@ pinpoint-web:
     user: 
     password: 
     database: 
+    
+  ### UI Access definitions (ingress and service)
+  #ingress:
+  #  enabled: false
+  #  host: pinpoint.com.example
+  #
+  #service:
+  #  ui:
+  #    type: "ClusterIP"
   
   ### External zookeeper address (Default : pinpoint-zookeeper) 
   zookeeper: 

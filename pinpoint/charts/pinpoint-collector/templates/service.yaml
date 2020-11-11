@@ -11,8 +11,8 @@ metadata:
   name: {{ template "pinpoint-collector.fullname" . }}
 spec:
   ports:
-  - port: 9080
-    targetPort: 9080
+  - port: 8081
+    targetPort: 8081
     name: http
   - port: 9991
     targetPort: 9991
